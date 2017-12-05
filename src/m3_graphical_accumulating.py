@@ -9,8 +9,8 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python.
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Huiruo Zou.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -96,7 +96,7 @@ def draw_parallel_lines(n, point, length, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -109,6 +109,30 @@ def draw_parallel_lines(n, point, length, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+
+    x = point.x  # Initialize x and y BEFORE the loop
+    y = point.y  # Choose values that make the FIRST object easy to draw
+
+    for _ in range(n):  # Loop that does NOT use its index variable
+
+        # --------------------------------------------------------------
+        # Construct the relevant object(s),
+        # based on the current x, y and other variables.
+        # --------------------------------------------------------------
+        start = rg.Point(x, y)
+        end = rg.Point(x + length, y)
+        line = rg.Line(start, end)
+
+        # Attach the object(s) to the window.
+        line.attach_to(window)
+
+        # --------------------------------------------------------------
+        # Increment x (and in other problems, other variables)
+        # for the thing(s) to draw in the NEXT iteration of the loop.
+        # --------------------------------------------------------------
+        y = y + 30
+
+    window.render()
 
 
 def run_test_draw_lines():
@@ -161,7 +185,7 @@ def draw_lines(n, point, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -174,6 +198,28 @@ def draw_lines(n, point, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+    x = point.x  # Initialize x and y BEFORE the loop
+    y = point.y  # Choose values that make the FIRST object easy to draw
+
+    for _ in range(n):  # Loop that does NOT use its index variable
+
+        # --------------------------------------------------------------
+        # Construct the relevant object(s),
+        # based on the current x, y and other variables.
+        # --------------------------------------------------------------
+        end = rg.Point(x+100, y-100)
+        line = rg.Line(point, end)
+
+        # Attach the object(s) to the window.
+        line.attach_to(window)
+
+        # --------------------------------------------------------------
+        # Increment x (and in other problems, other variables)
+        # for the thing(s) to draw in the NEXT iteration of the loop.
+        # --------------------------------------------------------------
+        y = y + 200/(n-1)
+
+    window.render()
 
 
 # ----------------------------------------------------------------------
